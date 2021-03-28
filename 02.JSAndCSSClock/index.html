@@ -10,7 +10,6 @@
 				<div class="hand hour-hand"></div>
 				<div class="hand min-hand"></div>
 				<div class="hand second-hand"></div>
-				<div class="circle"></div>
 			</div>
 		</div>
 
@@ -52,17 +51,37 @@
 					-3px
 				); /* account for the height of the clock hands */
 			}
+			.clock-face::before {
+				background-color: black;
+				/* z-index: 9; */
+				border-radius: 50%;
+				content: "";
+				height: 20px;
+				left: 46.5%;
+				position: absolute;
+				top: 47.5%;
+				width: 20px;
+			}
 
 			.hand {
 				width: 50%;
 				height: 6px;
 				background: black;
+				box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
 				position: absolute;
 				top: 50%;
+				right: 50%;
 				transform: rotate(90deg);
 				transform-origin: right;
+				transition: all 0.05s;
+				transition-timing-function: cubic-bezier(
+					0.25,
+					0.1,
+					0,
+					2.12
+				); /* to make it like real clock hand (with shaking) */
 			}
-			.circle {
+			/* .circle {
 				position: absolute;
 				width: 25px;
 				height: 25px;
@@ -70,16 +89,32 @@
 				border-radius: 50%;
 				top: 48%;
 				right: 47%;
-			}
+			} */
 
 			.hand.hour-hand {
-				height: 8px;
+				border-bottom-left-radius: 0.5em;
+				border-top-left-radius: 0.5em;
+				height: 10px;
+				width: 40%;
 			}
 			.hand.min-hand {
-				height: 6px;
+				height: 5px;
 			}
 			.hand.second-hand {
-				height: 4px;
+				height: 2px;
+				background-color: #eeaf1e;
+				width: 50%;
+			}
+
+			.second-hand::before {
+				background-color: #eeaf1e;
+				border-radius: 50%;
+				content: "";
+				height: 10px;
+				left: 95.5%;
+				position: absolute;
+				top: -4px;
+				width: 10px;
 			}
 		</style>
 

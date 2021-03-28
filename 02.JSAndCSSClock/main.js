@@ -18,6 +18,12 @@ function startClock() {
 	const hours = now.getHours();
 	const hoursDegrees = (hours / 12) * 360 + (minutes / 60) * 30 + 90;
 	hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+	if (secondsDegrees === 90) secondHand.style.transition = "all 0s";
+	else secondHand.style.transition = "all 0.05s";
+
+	if (minutessDegrees === 90) minHand.style.transition = "all 0s";
+	else minHand.style.transition = "all 0.1s";
 }
 
 startClock(); // for testing only
